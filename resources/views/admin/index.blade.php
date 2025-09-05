@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
         <link rel="stylesheet" href="{{ asset('admin/css/open-iconic-bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('admin/css/animate.css') }}">
@@ -177,7 +178,7 @@
                 </div>
                 <div class="row justify-content-center mt-5">
                     <div class="col-md-6 text-center ftco-animate">
-                        <p><a href="#" class="btn btn-primary py-4 px-5">Download CV</a></p>
+                        <p><a href="{{ url('download-cv') }}" class="btn btn-primary py-4 px-5">Download CV</a></p>
                     </div>
                 </div>
             </div>
@@ -196,7 +197,7 @@
                     <div class="col-md-4 text-center d-flex ftco-animate">
                         <a href="#" class="services-1">
                             <span class="icon">
-                                <i class="flaticon-analysis"></i>
+                                <i class="fa-solid fa-laptop-code"></i>
                             </span>
                             <div class="desc">
                                 <h3 class="mb-5">Web Developer</h3>
@@ -206,7 +207,7 @@
                     <div class="col-md-4 text-center d-flex ftco-animate">
                         <a href="#" class="services-1">
                             <span class="icon">
-                                <i class="flaticon-flasks"></i>
+                                <i class="fa-solid fa-code-branch"></i>
                             </span>
                             <div class="desc">
                                 <h3 class="mb-5">REST APIs Developer</h3>
@@ -216,7 +217,7 @@
                     <div class="col-md-4 text-center d-flex ftco-animate">
                         <a href="#" class="services-1">
                             <span class="icon">
-                                <i class="flaticon-ideas"></i>
+                                <i class="fa-solid fa-mobile-screen-button"></i>
                             </span>
                             <div class="desc">
                                 <h3 class="mb-5">App Developer</h3>
@@ -227,7 +228,7 @@
                     <div class="col-md-4 text-center d-flex ftco-animate">
                         <a href="#" class="services-1">
                             <span class="icon">
-                                <i class="flaticon-analysis"></i>
+                                <i class="fa-solid fa-object-group"></i>
                             </span>
                             <div class="desc">
                                 <h3 class="mb-5">Wed Design</h3>
