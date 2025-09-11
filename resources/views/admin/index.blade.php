@@ -38,7 +38,7 @@
                         <li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li>
                         <li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
                         <li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
-                        <li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
+                        {{-- <li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li> --}}
                         <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
                     </ul>
                 </div>
@@ -403,8 +403,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/project-4.jpg') }});">
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/youchef.png') }});">
                             <div class="overlay"></div>
                             <div class="text text-center p-4">
                                 <h3><a href="https://yochef.dotverge.com" target="_blank">YoChef Pull-Up &amp; Food Delivery Ecosystem</a></h3>
@@ -412,8 +412,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/project-5.jpg') }});">
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/homegrown.png') }});">
                             <div class="overlay"></div>
                             <div class="text text-center p-4">
                                 <h3><a href="https://admin.rrhomegrown.com" target="_blank">RR &amp; Homegrown</a></h3>
@@ -422,24 +422,115 @@
                         </div>
                     </div>
 
-                    <div class="col-md-8">
-                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/project-1.jpg') }});">
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/agenious.png') }});">
                             <div class="overlay"></div>
                             <div class="text text-center p-4">
-                                <h3><a href="#">Branding &amp; Illustration Design</a></h3>
+                                <h3><a href="https://ageniushealthcare.com/">Agenius &amp; Healthcare Staffing </a></h3>
+                                <span>
+                                    Agenius HealthCare Staffing is a comprehensive application designed for hospital staff management.
+                                    Admins can post job vacancies, while users can efficiently search and apply for available positions.
+                                    The platform facilitates check-in and checkout processes, tracking users' working hours and activities.
+                                    With its user-friendly interface and robust features, it streamlines staffing operations for hospitals, ensuring smooth workflow and efficient resource management.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/wokue.png') }});">
+                            <div class="overlay"></div>
+                            <div class="text text-center p-4">
+                                <h3><a href="https://wokeu.net/home">Wokeu &amp; (Claim Application)</a></h3>
+                                <span>
+                                    Wokeu, the Discrimination application, empowers users to post incidents, engage through likes, comments, and shares. Notifications are managed efficiently.
+                                    Admin panel oversees posts, blogs, political blogs, events, and facilitates messaging. Built on Laravel, it offers seamless user interaction and robust administrative control for effective discrimination awareness and action
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/cyberonix.png') }});">
+                            <div class="overlay"></div>
+                            <div class="text text-center p-4">
+                                <h3><a href="https://hr.cyberonix.co">Cyberonix &amp; Consulting</a></h3>
+                                <span>
+                                    The HR Management System built on Laravel streamlines employee activities, encompassing leave requests, attendance tracking, salary management, ticketing systems, and insurance administration.
+                                    It centralizes critical notifications, ensuring seamless communication between management and staff. With its robust features and intuitive interface, it optimizes HR processes for enhanced efficiency and employee satisfaction.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/suescleaning.png') }});">
+                            <div class="overlay"></div>
+                            <div class="text text-center p-4">
+                                <h3><a href="https://sues-cleaning.dotverge.com/login">Sues &amp; Cleaning</a></h3>
                                 <span>Web Design</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="col-md-12">
-                            <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/project-3.jpg') }});">
-                                <div class="overlay"></div>
-                                <div class="text text-center p-4">
-                                    <h3><a href="#">Branding &amp; Illustration Design</a></h3>
-                                    <span>Web Design</span>
-                                </div>
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/patpat.png') }});">
+                            <div class="overlay"></div>
+                            <div class="text text-center p-4">
+                                <h3><a href="#">Patpat &amp;</a></h3>
+                                <span>Web Design</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/pos.png') }});">
+                            <div class="overlay"></div>
+                            <div class="text text-center p-4">
+                                <h3><a href="#">POS &amp; Managment</a></h3>
+                                <span>
+                                    Developed Laravel-based models for Leads and Brands within a POS system, streamlining lead management and brand representation. Implemented data-driven insights and predictive algorithms to enhance sales conversion and brand recognition.
+                                    Integral in crafting a robust POS solution in Laravel, elevating business efficiency and customer satisfaction.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/clientonboarding.png') }});">
+                            <div class="overlay"></div>
+                            <div class="text text-center p-4">
+                                <h3><a href="#">Client &amp; Onboarding</a></h3>
+                                <span>Web Design</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/quizcraft.png') }});">
+                            <div class="overlay"></div>
+                            <div class="text text-center p-4">
+                                <h3><a href="#">Quiz &amp; Craft</a></h3>
+                                <span>
+                                    Quiz Craft is a web-based application designed to streamline quiz creation and management. In this project, the admin can create brands and their types, followed by questions of various formats, such as text-based answers, numerical responses, and multiple-choice options.
+                                    Admins can then generate shareable links for the quizzes, which users can access after providing their name and email. Users can attempt quizzes in real time, with immediate results displayed. Admins have access to real-time reports on user performance and test records.
+                                    This system efficiently manages and tracks quiz interactions for both users and administrators.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/quizcraft.png') }});">
+                            <div class="overlay"></div>
+                            <div class="text text-center p-4">
+                                <h3><a href="https://birth-journal.dotverge.com">Birth &amp; Journal</a></h3>
+                                <span>
+                                    The Birth Journal Application on Laravel efficiently manages baby birth details and notifies
+                                    relatives and friends. It organizes all aspects of childcare, including doctor appointments,
+                                    feeding, sleeping, and diaper changes. With its user-friendly interface, it simplifies the
+                                    tracking of daily baby activities, ensuring optimal care and communication among caregivers.
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -447,7 +538,7 @@
             </div>
         </section>
 
-        <section class="ftco-section" id="blog-section">
+        {{-- <section class="ftco-section" id="blog-section">
             <div class="container">
                 <div class="row justify-content-center mb-5 pb-5">
                     <div class="col-md-7 heading-section text-center ftco-animate">
@@ -507,7 +598,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
             <div class="container">
