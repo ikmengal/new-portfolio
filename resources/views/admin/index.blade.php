@@ -51,7 +51,7 @@
                     <div class="overlay"></div>
                     <div class="container">
                         <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-                            <div class="one-third js-fullheight order-md-last img" style="background-image:url({{ asset('admin/images/bg_1.png') }});">
+                            <div class="one-third js-fullheight order-md-last img" style="background-image:url({{ asset('admin/images/profileimage-removebg-preview.png') }});">
                                 <div class="overlay"></div>
                             </div>
                             <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
@@ -91,7 +91,7 @@
                     <div class="col-md-6 col-lg-5 d-flex">
                         <div class="img-about img d-flex align-items-stretch">
                             <div class="overlay"></div>
-                            <div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{ asset('admin/images/bg_1.png') }});"></div>
+                            <div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{ asset('admin/images/profileimage-removebg-preview-black.png') }});"></div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
@@ -722,7 +722,7 @@
                         </form>
                     </div>
                     <div class="col-md-6 d-flex">
-                        <div class="img" style="background-image: url({{ asset('admin/images/about.jpg') }});"></div>
+                        <div class="img" style="background-image: url({{ asset('admin/images/profileimage-removebg-preview-black.png') }});"></div>
                     </div>
                 </div>
             </div>
