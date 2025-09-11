@@ -106,7 +106,7 @@
                                     <li class="d-flex"><span>Address:</span> <span>R 57/58 A Section Gulshan e Zahoor Lines Area Karachi, Sindh, Pakistan</span></li>
                                     <li class="d-flex"><span>Zip code:</span> <span>70500</span></li>
                                     <li class="d-flex"><span>Email:</span> <span>imranalibrohi@gmail.com</span></li>
-                                    <li class="d-flex"><span>Phone: </span> <span>+92-334-2859-730</span></li>
+                                    <li class="d-flex"><span>Phone: </span> <span>+923342859730</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -412,6 +412,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/homegrown.png') }});">
                             <div class="overlay"></div>
@@ -519,7 +520,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="col-md-6">
                         <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/quizcraft.png') }});">
@@ -772,7 +772,7 @@
                             <div class="block-23 mb-3">
                                 <ul>
                                     <li><span class="icon icon-map-marker"></span><span class="text">R 57/58 Section A Gulashan e Zahoor Lines Area Karachi, Sindh, Pakistan</span></li>
-                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+92 334 1234 567</span></a></li>
+                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+923342859730</span></a></li>
                                     <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
                                 </ul>
                             </div>
