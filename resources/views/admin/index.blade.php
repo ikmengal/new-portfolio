@@ -520,6 +520,7 @@
                         </div>
                     </div>
 
+
                     <div class="col-md-6">
                         <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/quizcraft.png') }});">
                             <div class="overlay"></div>
