@@ -721,8 +721,14 @@
                                 <textarea cols="30" rows="7" class="form-control" name="message" placeholder="Message"></textarea>
                                 <span class="text-danger error-text message_error"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" id="submitBtn">
                                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                            </div>
+                            <div class="form-group d-none" id="loadingBtn">
+                                <button class="btn btn-primary py-3 px-5">
+                                    <div class="spinner-border spinner-border-sm" role="status"></div>&nbsp; &nbsp;
+                                    <span class="visually-hidden">Loading...</span>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -823,6 +829,9 @@
 
                     $(".error-text").text("");
 
+                    $('#submitBtn').addClass('d-none');
+                    $('#loadingBtn').removeClass('d-none');
+
                     $.ajax({
                         url: $(this).attr("action"),
                         method: $(this).attr("method"),
@@ -830,12 +839,16 @@
                         dataType: "json",
                         success: function (response) {
                             if (response.status === "success") {
+                                $('#submitBtn').removeClass('d-none');
+                                $('#loadingBtn').addClass('d-none');
                                 alert(response.message);
                                 $("#contact-form")[0].reset();
                             }
                         },
                         error: function (xhr) {
                             if (xhr.status === 422) {
+                                $('#submitBtn').removeClass('d-none');
+                                $('#loadingBtn').addClass('d-none');
                                 let errors = xhr.responseJSON.errors;
                                 $.each(errors, function (key, value) {
                                     $("." + key + "_error").text(value[0]);
