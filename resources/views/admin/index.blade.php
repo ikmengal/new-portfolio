@@ -703,18 +703,23 @@
 
                 <div class="row no-gutters block-9">
                     <div class="col-md-6 order-md-last d-flex">
-                        <form action="#" class="bg-light p-4 p-md-5 contact-form">
+                        <form id="contact-form" action="{{ route('contact_us') }}" method="POST" class="bg-light p-4 p-md-5 contact-form">
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Name">
+                                <input type="text" class="form-control" name="name" placeholder="Your Name">
+                                <span class="text-danger error-text name_error"></span>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Email">
+                                <input type="text" class="form-control" name="email" placeholder="Your Email">
+                                <span class="text-danger error-text email_error"></span>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject">
+                                <input type="text" class="form-control" name="subject" placeholder="Subject">
+                                <span class="text-danger error-text subject_error"></span>
                             </div>
                             <div class="form-group">
-                                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                                <textarea cols="30" rows="7" class="form-control" name="message" placeholder="Message"></textarea>
+                                <span class="text-danger error-text message_error"></span>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
@@ -810,5 +815,36 @@
         <script src="{{ asset('admin/js/jquery.animateNumber.min.js') }}"></script>
         <script src="{{ asset('admin/js/scrollax.min.js') }}"></script>
         <script src="{{ asset('admin/js/main.js') }}"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#contact-form").on("submit", function (e) {
+                    e.preventDefault();
+
+                    $(".error-text").text("");
+
+                    $.ajax({
+                        url: $(this).attr("action"),
+                        method: $(this).attr("method"),
+                        data: $(this).serialize(),
+                        dataType: "json",
+                        success: function (response) {
+                            if (response.status === "success") {
+                                alert(response.message);
+                                $("#contact-form")[0].reset();
+                            }
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 422) {
+                                let errors = xhr.responseJSON.errors;
+                                $.each(errors, function (key, value) {
+                                    $("." + key + "_error").text(value[0]);
+                                });
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
