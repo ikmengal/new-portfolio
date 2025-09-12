@@ -747,9 +747,9 @@
                             <h2 class="ftco-heading-2">About</h2>
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                                <li class="ftco-animate"><a href="https://www.twitter.com/imranalimengal25" target="_blank"><span class="icon-twitter"></span></a></li>
+                                <li class="ftco-animate"><a href="https://www.facebook.com/imranalimengal25" target="_blank"><span class="icon-facebook"></span></a></li>
+                                <li class="ftco-animate"><a href="https://www.instagram.com/imranalimengal25" target="_blank"><span class="icon-instagram"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -783,8 +783,8 @@
                             <div class="block-23 mb-3">
                                 <ul>
                                     <li><span class="icon icon-map-marker"></span><span class="text">R 57/58 Section A Gulashan e Zahoor Lines Area Karachi, Sindh, Pakistan</span></li>
-                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+923342859730</span></a></li>
-                                    <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                                    <li><a href="tel://+923342859730"><span class="icon icon-phone"></span><span class="text">+923342859730</span></a></li>
+                                    <li><a href="mailto:imranalibrohi148@gmail.com"><span class="icon icon-envelope"></span><span class="text">imranalibrohi148@gmail.com</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -792,7 +792,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This site is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="javascript:;" target="_blank">Imran Ali Brohi</a></p>
+                        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This site is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="javascript:;" target="_blank">IK Mengal Solutions</a></p>
                     </div>
                 </div>
             </div>
