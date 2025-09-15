@@ -212,7 +212,7 @@
                             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
                                 <div class="service-item position-relative">
                                     <div class="icon"><i class="bi bi-code icon"></i></div>
-                                    <h4><a href="" class="stretched-link">Web Developer</a></h4>
+                                    <h4><a href="javascript:;" class="stretched-link">Web Developer</a></h4>
                                     <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                                 </div>
                             </div><!-- End Service Item -->
@@ -220,7 +220,7 @@
                             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
                                 <div class="service-item position-relative">
                                     <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                                    <h4><a href="" class="stretched-link">REST APIs Developer</a></h4>
+                                    <h4><a href="javascript:;" class="stretched-link">REST APIs Developer</a></h4>
                                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                                 </div>
                             </div><!-- End Service Item -->
@@ -228,7 +228,7 @@
                             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
                                 <div class="service-item position-relative">
                                     <div class="icon"><i class="bi bi-phone icon"></i></div>
-                                    <h4><a href="" class="stretched-link">App Developer</a></h4>
+                                    <h4><a href="javascript:;" class="stretched-link">App Developer</a></h4>
                                     <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
                                 </div>
                             </div><!-- End Service Item -->
@@ -236,7 +236,7 @@
                             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
                                 <div class="service-item position-relative">
                                     <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-                                    <h4><a href="" class="stretched-link">Wed Design</a></h4>
+                                    <h4><a href="javascript:;" class="stretched-link">Wed Design</a></h4>
                                     <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                                 </div>
                             </div><!-- End Service Item -->
@@ -244,7 +244,7 @@
                             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
                                 <div class="service-item position-relative">
                                     <div class="icon"><i class="bi bi-rulers icon"></i></div>
-                                    <h4><a href="" class="stretched-link">Logo Design</a></h4>
+                                    <h4><a href="javascript:;" class="stretched-link">Logo Design</a></h4>
                                     <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                                 </div>
                             </div><!-- End Service Item -->
@@ -252,7 +252,7 @@
                             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
                                 <div class="service-item position-relative">
                                     <div class="icon"><i class="bi bi-ubuntu icon"></i></div>
-                                    <h4><a href="" class="stretched-link">Branding</a></h4>
+                                    <h4><a href="javascript:;" class="stretched-link">Branding</a></h4>
                                     <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                                 </div>
                             </div><!-- End Service Item -->
@@ -395,7 +395,7 @@
                                         <img src="{{ asset('admin/images/youchef.png') }}" class="img-fluid" alt="" style="height: 350px">
                                         <div class="portfolio-info">
                                             <a href="{{ asset('admin/images/youchef.png') }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                            <a href="https://yochef.dotverge.com" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                            <a href="{{ route('portfolio_detail',['title' => 'yochef']) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                         </div>
                                     </div>
                                 </div><!-- End Portfolio Item -->
@@ -405,7 +405,7 @@
                                         <img src="{{ asset('admin/images/homegrown.png') }}" class="img-fluid" alt="" style="height: 350px">
                                         <div class="portfolio-info">
                                             <a href="{{ asset('admin/images/homegrown.png') }}" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                            <a href="https://admin.rrhomegrown.com" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                            <a href="{{ route('portfolio_detail',['title' => 'rrhomegrown']) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                         </div>
                                     </div>
                                 </div><!-- End Portfolio Item -->
@@ -415,7 +415,7 @@
                                         <img src="{{ asset('admin/images/agenious.png') }}" class="img-fluid" alt="" style="height: 350px">
                                         <div class="portfolio-info">
                                             <a href="{{ asset('admin/images/agenious.png') }}" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                            <a href="https://ageniushealthcare.com" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                            <a href="{{ route('portfolio_detail', ['title' => 'ageniushealthcare']) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                         </div>
                                     </div>
                                 </div><!-- End Portfolio Item -->
@@ -425,7 +425,7 @@
                                         <img src="{{ asset('admin/images/wokue.png') }}" class="img-fluid" alt="" style="height: 350px">
                                         <div class="portfolio-info">
                                             <a href="{{ asset('admin/images/wokue.png') }}" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                            <a href="https://wokeu.net/home" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                            <a href="{{ route('portfolio_detail', ['title' => 'wokeu']) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                         </div>
                                     </div>
                                 </div><!-- End Portfolio Item -->
@@ -505,7 +505,7 @@
                 </section>
             <!-- /Portfolio Section -->
 
-            <!-- Pricing Section -->
+            {{-- <!-- Pricing Section -->
                 <section id="pricing" class="pricing section">
                     <!-- Section Title -->
                         <div class="container section-title" data-aos="fade-up">
@@ -624,7 +624,7 @@
                         </div>
                     </div>
                 </section>
-            <!-- /Pricing 2 Section -->
+            <!-- /Pricing 2 Section --> --}}
 
             <!-- Gallery Section -->
                 <section id="gallery" class="gallery section">

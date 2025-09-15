@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
-    ContactController,
+    PortfolioController,
+    ContactController
 };
 
 Route::get('/', function () {
@@ -16,3 +17,4 @@ Route::get('download-cv', function () {
 });
 
 Route::post('contact_us', [ContactController::class,'store'])->name('contact_us');
+Route::get('show', [PortfolioController::class,'show'])->name('portfolio_detail');

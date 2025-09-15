@@ -408,7 +408,7 @@
                             <div class="overlay"></div>
                             <div class="text text-center p-4">
                                 <h3><a href="https://yochef.dotverge.com" target="_blank">YoChef Pull-Up &amp; Food Delivery Ecosystem</a></h3>
-                                <span>Developed a complete food delivery ecosystem comprising a User App, Rider App, and Web-Based Admin Panel. The User App allows customers to register, browse menus, customize orders, make secure payments, track deliveries in real-time, and provide feedback. The Rider App enables delivery personnel to manage assigned orders, navigate with integrated maps, and share live location updates. The Admin Panel empowers management to control menus, track inventory, assign riders, and send push notifications. Built with a secure backend, real-time APIs, and cloud-hosted database for scalability, the system ensures seamless order processing, efficient delivery management, and engaging customer experience across Android, iOS, and web platforms. </span>
+                                <span>Developed a complete food delivery ecosystem comprising a User App, Rider App, and Web-Based Admin Panel. The User App allows customers to register, browse menus, customize orders, make secure payments, track deliveries in real-time, and provide feedback. The Rider App enables delivery personnel to manage assigned orders, navigate with integrated maps, and share live location updates. The Admin Panel empowers management to control menus, track inventory, assign riders, and send push notifications. Built with a secure backend, real-time APIs, and cloud-hosted database for scalability, the system ensures seamless order processing, efficient delivery management, and engaging customer experience across Android, iOS, and web platforms.</span>
                             </div>
                         </div>
                     </div>
@@ -418,7 +418,7 @@
                             <div class="overlay"></div>
                             <div class="text text-center p-4">
                                 <h3><a href="https://admin.rrhomegrown.com" target="_blank">RR &amp; Homegrown</a></h3>
-                                <span>Meet Rhonda Harris, a passionate Climate Activist on a mission to save the planet and protect the delicate beauty of butterflies. With a fiery determination and a heart full of love for nature, Rhonda is leading the charge for environmental change and conservation efforts. </span>
+                                <span>Meet Rhonda Harris, a passionate Climate Activist on a mission to save the planet and protect the delicate beauty of butterflies. With a fiery determination and a heart full of love for nature, Rhonda is leading the charge for environmental change and conservation efforts.</span>
                             </div>
                         </div>
                     </div>
@@ -427,7 +427,7 @@
                         <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ asset('admin/images/agenious.png') }});">
                             <div class="overlay"></div>
                             <div class="text text-center p-4">
-                                <h3><a href="https://ageniushealthcare.com/">Agenius &amp; Healthcare Staffing </a></h3>
+                                <h3><a href="https://ageniushealthcare.com/">Agenius &amp; Healthcare Staffing</a></h3>
                                 <span>
                                     Agenius HealthCare Staffing is a comprehensive application designed for hospital staff management.
                                     Admins can post job vacancies, while users can efficiently search and apply for available positions.
