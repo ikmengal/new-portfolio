@@ -236,23 +236,7 @@
                             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
                                 <div class="service-item position-relative">
                                     <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-                                    <h4><a href="javascript:;" class="stretched-link">Wed Design</a></h4>
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                                </div>
-                            </div><!-- End Service Item -->
-
-                            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-                                <div class="service-item position-relative">
-                                    <div class="icon"><i class="bi bi-rulers icon"></i></div>
-                                    <h4><a href="javascript:;" class="stretched-link">Logo Design</a></h4>
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                                </div>
-                            </div><!-- End Service Item -->
-
-                            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-                                <div class="service-item position-relative">
-                                    <div class="icon"><i class="bi bi-ubuntu icon"></i></div>
-                                    <h4><a href="javascript:;" class="stretched-link">Branding</a></h4>
+                                    <h4><a href="javascript:;" class="stretched-link">Web Designer</a></h4>
                                     <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                                 </div>
                             </div><!-- End Service Item -->
