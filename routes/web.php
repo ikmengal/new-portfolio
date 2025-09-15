@@ -7,8 +7,8 @@ use App\Http\Controllers\Admin\{
 };
 
 Route::get('/', function () {
-    return view('laura.index');
     return view('admin.index');
+    return view('laura.index');
 });
 
 Route::get('download-cv', function () {
