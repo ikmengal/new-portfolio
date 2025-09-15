@@ -30,37 +30,32 @@
     <body class="index-page">
         <header id="header" class="header d-flex align-items-center fixed-top">
             <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+                <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+                    <h1 class="sitename">Imran Ali Brohi</h1>
+                </a>
 
-            <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="assets/img/logo.png" alt=""> -->
-                <h1 class="sitename">Laura</h1>
-            </a>
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </nav>
 
-            <nav id="navmenu" class="navmenu">
-                <ul>
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-                </ul>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-            </nav>
-
-            <div class="header-social-links">
-                <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-
+                <div class="header-social-links">
+                    <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div>
             </div>
         </header>
 
         <main class="main">
-
             <!-- Hero Section -->
                 <section id="hero" class="hero section dark-background">
                     <img src="{{ asset('laura/assets/img/hero-bg.jpg') }}" alt="" data-aos="fade-in">
@@ -645,64 +640,64 @@
                         <div class="row g-0">
                             <div class="col-lg-3 col-md-4">
                                 <div class="gallery-item">
-                                    <a href="assets/img/gallery/gallery-1.jpg" class="glightbox" data-gallery="images-gallery">
-                                        <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+                                    <a href="{{ asset('laura/assets/img/gallery/gallery-1.jpg') }}" class="glightbox" data-gallery="images-gallery">
+                                        <img src="{{ asset('laura/assets/img/gallery/gallery-1.jpg') }}" alt="" class="img-fluid">
                                     </a>
                                 </div>
                             </div><!-- End Gallery Item -->
 
                             <div class="col-lg-3 col-md-4">
                                 <div class="gallery-item">
-                                    <a href="assets/img/gallery/gallery-2.jpg" class="glightbox" data-gallery="images-gallery">
-                                        <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
+                                    <a href="{{ asset('laura/assets/img/gallery/gallery-2.jpg') }}" class="glightbox" data-gallery="images-gallery">
+                                        <img src="{{ asset('laura/assets/img/gallery/gallery-2.jpg') }}" alt="" class="img-fluid">
                                     </a>
                                 </div>
                             </div><!-- End Gallery Item -->
 
                             <div class="col-lg-3 col-md-4">
                                 <div class="gallery-item">
-                                    <a href="assets/img/gallery/gallery-3.jpg" class="glightbox" data-gallery="images-gallery">
-                                        <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
+                                    <a href="{{ asset('laura/assets/img/gallery/gallery-3.jpg') }}" class="glightbox" data-gallery="images-gallery">
+                                        <img src="{{ asset('laura/assets/img/gallery/gallery-3.jpg') }}" alt="" class="img-fluid">
                                     </a>
                                 </div>
                             </div><!-- End Gallery Item -->
 
                             <div class="col-lg-3 col-md-4">
                                 <div class="gallery-item">
-                                    <a href="assets/img/gallery/gallery-4.jpg" class="glightbox" data-gallery="images-gallery">
-                                        <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
+                                    <a href="{{ asset('laura/assets/img/gallery/gallery-4.jpg') }}" class="glightbox" data-gallery="images-gallery">
+                                        <img src="{{ asset('laura/assets/img/gallery/gallery-4.jpg') }}" alt="" class="img-fluid">
                                     </a>
                                 </div>
                             </div><!-- End Gallery Item -->
 
                             <div class="col-lg-3 col-md-4">
                                 <div class="gallery-item">
-                                    <a href="assets/img/gallery/gallery-5.jpg" class="glightbox" data-gallery="images-gallery">
-                                        <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
+                                    <a href="{{ asset('laura/assets/img/gallery/gallery-5.jpg') }}" class="glightbox" data-gallery="images-gallery">
+                                        <img src="{{ asset('laura/assets/img/gallery/gallery-5.jpg') }}" alt="" class="img-fluid">
                                     </a>
                                 </div>
                             </div><!-- End Gallery Item -->
 
                             <div class="col-lg-3 col-md-4">
                                 <div class="gallery-item">
-                                    <a href="assets/img/gallery/gallery-6.jpg" class="glightbox" data-gallery="images-gallery">
-                                        <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
+                                    <a href="{{ asset('laura/assets/img/gallery/gallery-6.jpg') }}" class="glightbox" data-gallery="images-gallery">
+                                        <img src="{{ asset('laura/assets/img/gallery/gallery-6.jpg') }}" alt="" class="img-fluid">
                                     </a>
                                 </div>
                             </div><!-- End Gallery Item -->
 
                             <div class="col-lg-3 col-md-4">
                                 <div class="gallery-item">
-                                    <a href="assets/img/gallery/gallery-7.jpg" class="glightbox" data-gallery="images-gallery">
-                                        <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
+                                    <a href="{{ asset('laura/assets/img/gallery/gallery-7.jpg') }}" class="glightbox" data-gallery="images-gallery">
+                                        <img src="{{ asset('laura/assets/img/gallery/gallery-7.jpg') }}" alt="" class="img-fluid">
                                     </a>
                                 </div>
                             </div><!-- End Gallery Item -->
 
                             <div class="col-lg-3 col-md-4">
                                 <div class="gallery-item">
-                                    <a href="assets/img/gallery/gallery-8.jpg" class="glightbox" data-gallery="images-gallery">
-                                        <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
+                                    <a href="{{ asset('laura/assets/img/gallery/gallery-8.jpg') }}" class="glightbox" data-gallery="images-gallery">
+                                        <img src="{{ asset('laura/assets/img/gallery/gallery-8.jpg') }}" alt="" class="img-fluid">
                                     </a>
                                 </div>
                             </div><!-- End Gallery Item -->
