@@ -5,14 +5,38 @@ use App\Http\Controllers\Admin\{
     PortfolioController,
     AboutUsController,
     ContactController,
-    HeroController
+    SettingController,
+    AdminController,
+    HeroController,
+    AuthController,
 };
 
 Route::get('/', function () {
-    return redirect()->route('hero');
-    // return view('admin.index');
-    // return view('laura.index');
-    // return view('admin.pages.hero');
+    return redirect()->route('admin.login');
+});
+
+Route::get('admin/login', [AuthController::class, 'loginForm'])->name('login');
+
+Route::controller(AuthController::class)->prefix('admin')->name('admin.')->group(function() {
+    Route::post('login', 'login')->name('login');
+    Route::get('logout', 'logout')->name('logout');
+});
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+    // Setting Custom Routes
+    Route::get('setting/craete', [SettingController::class, 'create'])->name('settings.create');
+    Route::post('setting/store', [SettingController::class, 'store'])->name('settings.store');
+    Route::patch('setting/update/{id}', [SettingController::class, 'update'])->name('settings.update');
+
+    // FAQs Custom Routes
+    Route::controller(AboutUsController::class)->prefix('about_us')->name('about_us.')->group(function () {
+        Route::get('trashed', 'trashed')->name('trashed');
+        Route::get('restore/{id}', 'reStore')->name('restore');
+    });
+
+    Route::resource('about_us', AboutUsController::class);
 });
 
 Route::get('download-cv', function () {
@@ -29,5 +53,3 @@ Route::get('contact', [HeroController::class, 'contact'])->name('contact');
 
 Route::post('contact_us', [ContactController::class,'store'])->name('contact_us');
 Route::get('show', [PortfolioController::class,'show'])->name('portfolio_detail');
-
-Route::resource('about_us', AboutUsController::class);

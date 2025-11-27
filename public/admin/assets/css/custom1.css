@@ -1,0 +1,7 @@
+.swal2-container{
+    z-index: 1085 !important;
+}
+
+.cke_notification_warning{
+    display: none !important;
+}
