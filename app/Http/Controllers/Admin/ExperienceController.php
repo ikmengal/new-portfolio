@@ -3,28 +3,27 @@
 namespace App\Http\Controllers\Admin;
 
 use Yajra\DataTables\Facades\DataTables;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\AboutUs;
+use Illuminate\Support\Str;
+use App\Models\Experience;
 
-class AboutUsController extends Controller
+class ExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        // $this->authorize('about_us-list');
-        $title = 'About Us';
+        $title = 'Experiences';
         $model = [];
-        AboutUs::latest()
-            ->chunk(100, function ($aboutUs) use (&$model) {
-                foreach ($aboutUs as $about) {
-                    $model[] = $about;
+        Experience::latest()
+            ->chunk(100, function ($experiences) use (&$model) {
+                foreach ($experiences as $experience) {
+                    $model[] = $experience;
                 }
         });
         if($request->ajax() && $request->loaddata == "yes"){
@@ -56,12 +55,12 @@ class AboutUsController extends Controller
                 }
             })
             ->editColumn('action', function($model){
-                return view('admin.about_us.action', ['model' => $model])->render();
+                return view('admin.experiences.action', ['model' => $model])->render();
             })
             ->rawColumns(['title', 'description', 'status', 'created_at', 'action'])
             ->make(true);
         }
-        return view('admin.about_us.index', get_defined_vars());
+        return view('admin.experiences.index', get_defined_vars());
     }
 
     /**
@@ -69,8 +68,8 @@ class AboutUsController extends Controller
      */
     public function create()
     {
-        // $this->authorize('about_us-create');
-        return (string) view('admin.about_us.create', get_defined_vars());
+        // $this->authorize('experiences-create');
+        return (string) view('admin.experiences.create');
     }
 
     /**
@@ -79,35 +78,34 @@ class AboutUsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string',
+            'title' => 'required',
+            'company' => 'required',
+            'start_date' => 'required|date',
+            'city' => 'required',
+            'status' => 'required',
         ]);
 
         DB::beginTransaction();
         try {
-            $folder_name = 'admin/assets/aboutus';
+            // $folder_name = 'admin/assets/experiences';
 
-            $image = $request->hasFile('image')
-                ? uploadSingleFile($request->file('image'), $folder_name, 'aboutus', null)
-                : null;
+            // $image = $request->hasFile('image')
+            //     ? uploadSingleFile($request->file('image'), $folder_name, 'experience', null)
+            //     : null;
 
-            $aboutUs = new AboutUs();
-            $aboutUs->user_id = Auth::id();
-            $aboutUs->title = $request->title;
-            $aboutUs->description = $request->short_description ?? null;
-            $aboutUs->birthday = $request->birthday ?? null;
-            $aboutUs->website = $request->website ?? null;
-            $aboutUs->Phone = $request->phone ?? null;
-            $aboutUs->City = $request->city ?? null;
-            $aboutUs->Age = $request->age ?? null;
-            $aboutUs->Degree = $request->degree ?? null;
-            $aboutUs->Email = Auth()->user()->email ?? $request->email ?? null;
-            $aboutUs->Freelance = $request->freelance ?? null;
-            // $aboutUs->image = $image;
-            $aboutUs->status = $request->status;
-            $aboutUs->save();
+            $experience = Experience::create([
+                'user_id' => Auth::id(),
+                'company' => $request->company ?? null,
+                'title' => $request->title,
+                'description' => $request->description ?? null,
+                'start_date' => $request->start_date ?? null,
+                'end_date' => $request->end_date ?? null,
+                'City' => $request->city ?? null,
+                'status' => $request->status,
+            ]);
 
             DB::commit();
-            return response()->json(['success' => true, 'message' => "About us added successfully"], 200);
+            return response()->json(['success' => true, 'message' => "Experience added successfully"], 200);
         } catch (\Throwable $e) {
             DB::rollback();
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
@@ -119,9 +117,9 @@ class AboutUsController extends Controller
      */
     public function show(string $id)
     {
-        // $this->authorize('blogs-view');
-        $model = AboutUs::where('id', $id)->first();
-        return (string) view('admin.about_us.show', get_defined_vars());
+        // $this->authorize('experiences-view');
+        $model = Experience::where('id', $id)->first();
+        return (string) view('admin.experiences.show', get_defined_vars());
     }
 
     /**
@@ -129,9 +127,9 @@ class AboutUsController extends Controller
      */
     public function edit(string $id)
     {
-        // $this->authorize('blogs-edit');
-        $model = AboutUs::where('id', $id)->first();
-        return (string) view('admin.about_us.edit', get_defined_vars());
+        // $this->authorize('experiences-eidt');
+        $model = Experience::where('id', $id)->first();
+        return (string) view('admin.experiences.edit', get_defined_vars());
     }
 
     /**
@@ -140,38 +138,36 @@ class AboutUsController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-           'title' => 'required|string',
+            'title' => 'required',
+            'company' => 'required|string',
+            'start_date' => 'required|date',
+            'city' => 'required',
+            'status' => 'required',
         ]);
-
 
         DB::beginTransaction();
         try {
-            $aboutUs = AboutUs::where('id', $id)->first();
+            $experience = Experience::where('id', $id)->first();
 
-            if($aboutUs){
-                $folder_name = 'admin/assets/aboutus';
-                $image = $request->hasFile('image')
-                    ? uploadSingleFile($request->file('image'), $folder_name, 'aboutus', $aboutUs->main_image)
-                    : $aboutUs->main_image;
+            if($experience){
+                // $folder_name = 'admin/assets/experience';
+                // $image = $request->hasFile('image')
+                //     ? uploadSingleFile($request->file('image'), $folder_name, 'experience', $experience->main_image)
+                //     : $experience->main_image;
 
-                $aboutUs->user_id = Auth::id();
-                $aboutUs->title = $request->title;
-                $aboutUs->description = $request->short_description ?? null;
-                $aboutUs->birthday = $request->birthday ?? null;
-                $aboutUs->website = $request->website ?? null;
-                $aboutUs->Phone = $request->phone ?? null;
-                $aboutUs->City = $request->city ?? null;
-                $aboutUs->Age = $request->age ?? null;
-                $aboutUs->Degree = $request->degree ?? null;
-                $aboutUs->Email = Auth()->user()->email ?? $request->email ?? null;
-                $aboutUs->Freelance = $request->freelance ?? null;
-                $aboutUs->status = $request->status;
-                $aboutUs->save();
+                $experience->title = $request->title;
+                $experience->company = $request->company ?? null;
+                $experience->description = $request->description ?? null;
+                $experience->start_date = $request->start_date ?? null;
+                $experience->end_date = $request->end_date ?? null;
+                $experience->City = $request->city ?? null;
+                $experience->status = $request->status;
+                $experience->save();
 
                 DB::commit();
-                return response()->json(['success' => true, 'message' => "About Us Updated successfully"], 200);
+                return response()->json(['success' => true, 'message' => "Experience Updated successfully"], 200);
             }else{
-                return response()->json(['success' => false, 'message' => 'About Us not found'], 500);
+                return response()->json(['success' => false, 'message' => 'Experience not found'], 500);
             }
         } catch (\Throwable $e) {
             DB::rollback();
@@ -184,8 +180,8 @@ class AboutUsController extends Controller
      */
     public function destroy(string $id)
     {
-        // $this->authorize('blogs-delete');
-        $find = AboutUs::where('id', $id)->first();
+        // $this->authorize('experiences-delete');
+        $find = Experience::where('id', $id)->first();
         if (isset($find) && !empty($find)) {
             $model = $find->delete();
             if ($model) {
@@ -201,11 +197,11 @@ class AboutUsController extends Controller
         }
     }
 
-        public function trashed(Request $request){
-        // $this->authorize('blogs-trashed');
+    public function trashed(Request $request){
+        // $this->authorize('experiences-trashed');
         $title = 'All Trashed Record';
         $trashed = true;
-        $model = AboutUs::onlyTrashed()->latest()->get();
+        $model = Experience::onlyTrashed()->latest()->get();
         if($request->ajax() && $request->loaddata == "yes"){
             return DataTables::of($model)
             ->addIndexColumn()
@@ -236,11 +232,11 @@ class AboutUsController extends Controller
             })
             ->editColumn('action', function($model){
                 $buttons = '';
-                // if (auth()->user()->can('education-restore')) {
+                // if (auth()->user()->can('experience-restore')) {
                     $buttons = '<a href="javascript:;"
                         class="btn btn-icon btn-label-info waves-effect restore me-2"
                         title="Restore Record"
-                        data-res-url="' . route('educations.restore', $model->id) . '">
+                        data-res-url="' . route('experiences.restore', $model->id) . '">
                         <i class="ti ti-refresh ti-sm"></i>
                     </a>';
                 // }
@@ -249,12 +245,12 @@ class AboutUsController extends Controller
             ->rawColumns(['title', 'description', 'status', 'created_at', 'action'])
             ->make(true);
         }
-        return view('admin.about_us.index', get_defined_vars());
+        return view('admin.experiences.index', get_defined_vars());
     }
 
     public function restore($id){
-        // $this->authorize('educations-restore');
-        $find = AboutUs::onlyTrashed()->where('id', $id)->first();
+        // $this->authorize('experiences-restore');
+        $find = Experience::onlyTrashed()->where('id', $id)->first();
         if (isset($find) && !empty($find)) {
             $restore = $find->restore();
             if (!empty($restore)) {

@@ -1,5 +1,6 @@
 @php
     use Illuminate\Support\Facades\Route;
+    use Illuminate\Support\Facades\Auth;
 @endphp
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
@@ -10,7 +11,7 @@
         <nav id="navmenu" class="navmenu">
             <ul>
             <li><a href="{{ route('hero') }}" class="{{ Route::is('hero') ? 'active' : '' }}">Home</a></li>
-            <li><a href="{{ route('aboutus') }}" class="{{ Route::is('aboutus') ? 'active' : '' }}">About</a></li>
+            <li><a href="{{ route('aboutus',Auth::id()) }}" class="{{ Route::is('aboutus') ? 'active' : '' }}">About</a></li>
             <li><a href="{{ route('resume') }}" class="{{ Route::is('resume') ? 'active' : '' }}">Resume</a></li>
             <li><a href="{{ route('services') }}" class="{{ Route::is('services') ? 'active' : '' }}">Services</a></li>
             <li><a href="{{ route('portfolio') }}" class="{{ Route::is('portfolio') ? 'active' : '' }}">Portfolio</a></li>

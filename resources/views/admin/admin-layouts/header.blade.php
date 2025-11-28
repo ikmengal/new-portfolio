@@ -59,7 +59,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
-                            <a class="dropdown-item" target="_blank" href="{{ route('hero') }}">
+                            <a class="dropdown-item" target="_blank" href="{{ route('hero',Auth()->user()->id ?? null) }}">
                                 <div class="d-flex">
                                     <div class="flex-shrink-0 me-3">
                                         <div class="avatar avatar-online">

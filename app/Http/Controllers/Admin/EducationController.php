@@ -7,11 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\AboutUs;
+use App\Models\Education;
 
-class AboutUsController extends Controller
+class EducationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +18,12 @@ class AboutUsController extends Controller
     public function index(Request $request)
     {
         // $this->authorize('about_us-list');
-        $title = 'About Us';
+        $title = 'Education';
         $model = [];
-        AboutUs::latest()
-            ->chunk(100, function ($aboutUs) use (&$model) {
-                foreach ($aboutUs as $about) {
-                    $model[] = $about;
+        Education::latest()
+            ->chunk(100, function ($educations) use (&$model) {
+                foreach ($educations as $education) {
+                    $model[] = $education;
                 }
         });
         if($request->ajax() && $request->loaddata == "yes"){
@@ -56,12 +55,12 @@ class AboutUsController extends Controller
                 }
             })
             ->editColumn('action', function($model){
-                return view('admin.about_us.action', ['model' => $model])->render();
+                return view('admin.educations.action', ['model' => $model])->render();
             })
             ->rawColumns(['title', 'description', 'status', 'created_at', 'action'])
             ->make(true);
         }
-        return view('admin.about_us.index', get_defined_vars());
+        return view('admin.educations.index', get_defined_vars());
     }
 
     /**
@@ -69,8 +68,8 @@ class AboutUsController extends Controller
      */
     public function create()
     {
-        // $this->authorize('about_us-create');
-        return (string) view('admin.about_us.create', get_defined_vars());
+        // $this->authorize('educations-create');
+        return (string) view('admin.educations.create');
     }
 
     /**
@@ -79,35 +78,36 @@ class AboutUsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string',
+            'degree' => 'required|string',
+            'title' => 'required',
+            'university' => 'required',
+            'start_date' => 'required|date',
+            'city' => 'required',
+            'status' => 'required',
         ]);
 
         DB::beginTransaction();
         try {
-            $folder_name = 'admin/assets/aboutus';
+            // $folder_name = 'admin/assets/aboutus';
 
-            $image = $request->hasFile('image')
-                ? uploadSingleFile($request->file('image'), $folder_name, 'aboutus', null)
-                : null;
+            // $image = $request->hasFile('image')
+            //     ? uploadSingleFile($request->file('image'), $folder_name, 'aboutus', null)
+            //     : null;
 
-            $aboutUs = new AboutUs();
-            $aboutUs->user_id = Auth::id();
-            $aboutUs->title = $request->title;
-            $aboutUs->description = $request->short_description ?? null;
-            $aboutUs->birthday = $request->birthday ?? null;
-            $aboutUs->website = $request->website ?? null;
-            $aboutUs->Phone = $request->phone ?? null;
-            $aboutUs->City = $request->city ?? null;
-            $aboutUs->Age = $request->age ?? null;
-            $aboutUs->Degree = $request->degree ?? null;
-            $aboutUs->Email = Auth()->user()->email ?? $request->email ?? null;
-            $aboutUs->Freelance = $request->freelance ?? null;
-            // $aboutUs->image = $image;
-            $aboutUs->status = $request->status;
-            $aboutUs->save();
+            $education = Education::create([
+                'user_id' => Auth::id(),
+                'degree' => $request->degree ?? null,
+                'title' => $request->title,
+                'university' => $request->university ?? null,
+                'description' => $request->description ?? null,
+                'start_date' => $request->start_date ?? null,
+                'end_date' => $request->end_date ?? null,
+                'City' => $request->city ?? null,
+                'status' => $request->status,
+            ]);
 
             DB::commit();
-            return response()->json(['success' => true, 'message' => "About us added successfully"], 200);
+            return response()->json(['success' => true, 'message' => "Education added successfully"], 200);
         } catch (\Throwable $e) {
             DB::rollback();
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
@@ -119,9 +119,9 @@ class AboutUsController extends Controller
      */
     public function show(string $id)
     {
-        // $this->authorize('blogs-view');
-        $model = AboutUs::where('id', $id)->first();
-        return (string) view('admin.about_us.show', get_defined_vars());
+        // $this->authorize('educations-view');
+        $model = Education::where('id', $id)->first();
+        return (string) view('admin.educations.show', get_defined_vars());
     }
 
     /**
@@ -129,9 +129,9 @@ class AboutUsController extends Controller
      */
     public function edit(string $id)
     {
-        // $this->authorize('blogs-edit');
-        $model = AboutUs::where('id', $id)->first();
-        return (string) view('admin.about_us.edit', get_defined_vars());
+        // $this->authorize('educations-eidt');
+        $model = Education::where('id', $id)->first();
+        return (string) view('admin.educations.edit', get_defined_vars());
     }
 
     /**
@@ -140,38 +140,38 @@ class AboutUsController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-           'title' => 'required|string',
+            'degree' => 'required|string',
+            'title' => 'required',
+            'university' => 'required',
+            'start_date' => 'required|date',
+            'city' => 'required',
+            'status' => 'required',
         ]);
-
 
         DB::beginTransaction();
         try {
-            $aboutUs = AboutUs::where('id', $id)->first();
+            $education = Education::where('id', $id)->first();
 
-            if($aboutUs){
-                $folder_name = 'admin/assets/aboutus';
-                $image = $request->hasFile('image')
-                    ? uploadSingleFile($request->file('image'), $folder_name, 'aboutus', $aboutUs->main_image)
-                    : $aboutUs->main_image;
+            if($education){
+                // $folder_name = 'admin/assets/education';
+                // $image = $request->hasFile('image')
+                //     ? uploadSingleFile($request->file('image'), $folder_name, 'education', $education->main_image)
+                //     : $education->main_image;
 
-                $aboutUs->user_id = Auth::id();
-                $aboutUs->title = $request->title;
-                $aboutUs->description = $request->short_description ?? null;
-                $aboutUs->birthday = $request->birthday ?? null;
-                $aboutUs->website = $request->website ?? null;
-                $aboutUs->Phone = $request->phone ?? null;
-                $aboutUs->City = $request->city ?? null;
-                $aboutUs->Age = $request->age ?? null;
-                $aboutUs->Degree = $request->degree ?? null;
-                $aboutUs->Email = Auth()->user()->email ?? $request->email ?? null;
-                $aboutUs->Freelance = $request->freelance ?? null;
-                $aboutUs->status = $request->status;
-                $aboutUs->save();
+                $education->title = $request->title;
+                $education->degree = $request->degree ?? null;
+                $education->university = $request->university ?? null;
+                $education->description = $request->description ?? null;
+                $education->start_date = $request->start_date ?? null;
+                $education->end_date = $request->end_date ?? null;
+                $education->City = $request->city ?? null;
+                $education->status = $request->status;
+                $education->save();
 
                 DB::commit();
-                return response()->json(['success' => true, 'message' => "About Us Updated successfully"], 200);
+                return response()->json(['success' => true, 'message' => "Education Updated successfully"], 200);
             }else{
-                return response()->json(['success' => false, 'message' => 'About Us not found'], 500);
+                return response()->json(['success' => false, 'message' => 'Education not found'], 500);
             }
         } catch (\Throwable $e) {
             DB::rollback();
@@ -185,7 +185,7 @@ class AboutUsController extends Controller
     public function destroy(string $id)
     {
         // $this->authorize('blogs-delete');
-        $find = AboutUs::where('id', $id)->first();
+        $find = Education::where('id', $id)->first();
         if (isset($find) && !empty($find)) {
             $model = $find->delete();
             if ($model) {
@@ -201,11 +201,11 @@ class AboutUsController extends Controller
         }
     }
 
-        public function trashed(Request $request){
+    public function trashed(Request $request){
         // $this->authorize('blogs-trashed');
         $title = 'All Trashed Record';
         $trashed = true;
-        $model = AboutUs::onlyTrashed()->latest()->get();
+        $model = Education::onlyTrashed()->latest()->get();
         if($request->ajax() && $request->loaddata == "yes"){
             return DataTables::of($model)
             ->addIndexColumn()
@@ -249,12 +249,12 @@ class AboutUsController extends Controller
             ->rawColumns(['title', 'description', 'status', 'created_at', 'action'])
             ->make(true);
         }
-        return view('admin.about_us.index', get_defined_vars());
+        return view('admin.educations.index', get_defined_vars());
     }
 
     public function restore($id){
         // $this->authorize('educations-restore');
-        $find = AboutUs::onlyTrashed()->where('id', $id)->first();
+        $find = Education::onlyTrashed()->where('id', $id)->first();
         if (isset($find) && !empty($find)) {
             $restore = $find->restore();
             if (!empty($restore)) {
