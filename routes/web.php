@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
+    TestimonialsController,
     ExperienceController,
     PortfolioController,
     EducationController,
+    ProjectController,
     AboutUsController,
     ContactController,
+    ServiceController,
     SettingController,
     AdminController,
     HeroController,
@@ -37,7 +40,7 @@ Route::get('portfolio/{id?}', [HeroController::class, 'portfolio'])->name('portf
 Route::get('contact', [HeroController::class, 'contact'])->name('contact');
 
 Route::post('contact_us', [ContactController::class,'store'])->name('contact_us');
-Route::get('show', [PortfolioController::class,'show'])->name('portfolio_detail');
+Route::get('show/{id?}', [PortfolioController::class,'show'])->name('portfolio_detail');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -53,19 +56,34 @@ Route::middleware(['auth'])->group(function(){
         Route::get('restore/{id}', 'reStore')->name('restore');
     });
 
-    // AboutUs Custom Routes
+    // Educations Custom Routes
     Route::controller(EducationController::class)->prefix('educations')->name('educations.')->group(function () {
         Route::get('trashed', 'trashed')->name('trashed');
         Route::get('restore/{id}', 'reStore')->name('restore');
     });
 
-    // AboutUs Custom Routes
+    // Experiences Custom Routes
     Route::controller(ExperienceController::class)->prefix('experiences')->name('experiences.')->group(function () {
         Route::get('trashed', 'trashed')->name('trashed');
         Route::get('restore/{id}', 'reStore')->name('restore');
     });
 
+    // Services Custom Routes
+    Route::controller(ServiceController::class)->prefix('service')->name('service.')->group(function () {
+        Route::get('trashed', 'trashed')->name('trashed');
+        Route::get('restore/{id}', 'reStore')->name('restore');
+    });
+
+    // Projects Custom Routes
+    Route::controller(ProjectController::class)->prefix('projects')->name('projects.')->group(function () {
+        Route::get('trashed', 'trashed')->name('trashed');
+        Route::get('restore/{id}', 'reStore')->name('restore');
+    });
+
+    Route::resource('testimonials', TestimonialsController::class);
     Route::resource('experiences', ExperienceController::class);
     Route::resource('educations', EducationController::class);
+    Route::resource('service', ServiceController::class);
     Route::resource('about_us', AboutUsController::class);
+    Route::resource('projects', ProjectController::class);
 });

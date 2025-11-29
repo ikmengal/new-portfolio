@@ -28,15 +28,30 @@ class HeroController extends Controller
     }
 
     public function resume(){
-        return view('admin.pages.resume');
+        $user = User::with(['hasEducations','hasExperiences'])->where('id', 1)->first();
+        if($user){
+            return view('admin.pages.resume', get_defined_vars());
+        }else{
+            return redirect()->back()->withErrors('User not found');
+        }
     }
 
     public function services(){
-        return view('admin.pages.services');
+        $user = User::with(['hasEducations','hasExperiences','hasServices','hasProjects'])->where('id', 1)->first();
+        if($user){
+            return view('admin.pages.services', get_defined_vars());
+        }else{
+            return redirect()->back()->withErrors('User not found');
+        }
     }
 
     public function portfolio(){
-        return view('admin.pages.portfolio');
+        $user = User::with(['hasEducations','hasExperiences','hasServices','hasProjects'])->where('id', 1)->first();
+        if($user){
+            return view('admin.pages.portfolio', get_defined_vars());
+        }else{
+            return redirect()->back()->withErrors('User not found');
+        }
     }
 
     public function contact(){

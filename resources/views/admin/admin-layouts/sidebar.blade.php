@@ -41,7 +41,9 @@
         {{-- @canany(['about_us-list']) --}}
             <li class="menu-item {{Route::is('about_us.*') ||
                                    Route::is('educations.*') ||
-                                   Route::is('experiences.*')
+                                   Route::is('experiences.*') ||
+                                   Route::is('service.*') ||
+                                   Route::is('projects.*')
                                     ? 'active open' : ''}}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons ti ti-settings"></i>
@@ -65,6 +67,20 @@
                     <li class="menu-item {{ Route::is('experiences.*') ? 'active' : ''}}">
                         <a href="{{ route('experiences.index') }}" class="menu-link">
                             <div data-i18n="Experience">Experience</div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Route::is('service.*') ? 'active' : ''}}">
+                        <a href="{{ route('service.index') }}" class="menu-link">
+                            <div data-i18n="Services">Services</div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Route::is('projects.*') ? 'active' : ''}}">
+                        <a href="{{ route('projects.index') }}" class="menu-link">
+                            <div data-i18n="Projects">Projects</div>
                         </a>
                     </li>
                 </ul>

@@ -7,24 +7,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\AboutUs;
+use Illuminate\Support\Str;
+use App\Models\Service;
 
-class AboutUsController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        // $this->authorize('about_us-list');
-        $title = 'About Us';
+        // $this->authorize('services-list');
+        $title = 'Services';
         $model = [];
-        AboutUs::latest()
-            ->chunk(100, function ($aboutUs) use (&$model) {
-                foreach ($aboutUs as $about) {
-                    $model[] = $about;
+        Service::latest()
+            ->chunk(100, function ($services) use (&$model) {
+                foreach ($services as $service) {
+                    $model[] = $service;
                 }
         });
         if($request->ajax() && $request->loaddata == "yes"){
@@ -56,12 +56,12 @@ class AboutUsController extends Controller
                 }
             })
             ->editColumn('action', function($model){
-                return view('admin.about_us.action', ['model' => $model])->render();
+                return view('admin.services.action', ['model' => $model])->render();
             })
             ->rawColumns(['title', 'description', 'status', 'created_at', 'action'])
             ->make(true);
         }
-        return view('admin.about_us.index', get_defined_vars());
+        return view('admin.services.index', get_defined_vars());
     }
 
     /**
@@ -69,8 +69,8 @@ class AboutUsController extends Controller
      */
     public function create()
     {
-        // $this->authorize('about_us-create');
-        return (string) view('admin.about_us.create', get_defined_vars());
+        // $this->authorize('services-create');
+        return (string) view('admin.services.create');
     }
 
     /**
@@ -79,38 +79,30 @@ class AboutUsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string',
+            'title' => 'required',
         ]);
 
         DB::beginTransaction();
         try {
-            $folder_name = 'admin/assets/aboutus';
-
+            $folder = 'admin/assets/services';
             $image = $request->hasFile('image')
-                ? uploadSingleFile($request->file('image'), $folder_name, 'aboutus', null)
+                ? uploadSingleFile($request->file('image'), $folder, 'services', null)
                 : null;
 
-            $aboutUs = new AboutUs();
-            $aboutUs->user_id = Auth::id();
-            $aboutUs->title = $request->title;
-            $aboutUs->description = $request->short_description ?? null;
-            $aboutUs->birthday = $request->birthday ?? null;
-            $aboutUs->website = $request->website ?? null;
-            $aboutUs->Phone = $request->phone ?? null;
-            $aboutUs->City = $request->city ?? null;
-            $aboutUs->Age = $request->age ?? null;
-            $aboutUs->Degree = $request->degree ?? null;
-            $aboutUs->Email = Auth()->user()->email ?? $request->email ?? null;
-            $aboutUs->Freelance = $request->freelance ?? null;
-            // $aboutUs->image = $image;
-            $aboutUs->status = $request->status;
-            $aboutUs->save();
+            $service = Service::create([
+                'user_id' => Auth::id(),
+                'title' => $request->title,
+                'description' => $request->description ?? null,
+                'image' => $image ?? null,
+                'status' => $request->status,
+            ]);
 
             DB::commit();
-            return response()->json(['success' => true, 'message' => "About us added successfully"], 200);
-        } catch (\Throwable $e) {
+            return response()->json(['success' => true, 'message' => "Service added successfully"]);
+        } catch (\Throwable $th) {
             DB::rollback();
-            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+            Log::info("Error: ".$th->getMessage());
+            return response()->json(['success' => false, 'message' => $th->getMessage()]);
         }
     }
 
@@ -119,9 +111,9 @@ class AboutUsController extends Controller
      */
     public function show(string $id)
     {
-        // $this->authorize('blogs-view');
-        $model = AboutUs::where('id', $id)->first();
-        return (string) view('admin.about_us.show', get_defined_vars());
+        // $this->authorize('services-view');
+        $model = Service::where('id', $id)->first();
+        return (string) view('admin.services.show', get_defined_vars());
     }
 
     /**
@@ -129,9 +121,9 @@ class AboutUsController extends Controller
      */
     public function edit(string $id)
     {
-        // $this->authorize('blogs-edit');
-        $model = AboutUs::where('id', $id)->first();
-        return (string) view('admin.about_us.edit', get_defined_vars());
+        // $this->authorize('services-edit');
+        $model = Service::where('id', $id)->first();
+        return (string) view('admin.services.edit', get_defined_vars());
     }
 
     /**
@@ -140,42 +132,33 @@ class AboutUsController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-           'title' => 'required|string',
+            'title' => 'required',
         ]);
-
 
         DB::beginTransaction();
         try {
-            $aboutUs = AboutUs::where('id', $id)->first();
-
-            if($aboutUs){
-                $folder_name = 'admin/assets/aboutus';
+            $service = Service::where('id', $id)->first();
+            if($service){
+                $folder = 'admin/assets/services';
                 $image = $request->hasFile('image')
-                    ? uploadSingleFile($request->file('image'), $folder_name, 'aboutus', $aboutUs->main_image)
-                    : $aboutUs->main_image;
+                    ? uploadSingleFile($request->file('image'), $folder, 'services', $service->image)
+                    : $service->image;
 
-                $aboutUs->user_id = Auth::id();
-                $aboutUs->title = $request->title;
-                $aboutUs->description = $request->short_description ?? null;
-                $aboutUs->birthday = $request->birthday ?? null;
-                $aboutUs->website = $request->website ?? null;
-                $aboutUs->Phone = $request->phone ?? null;
-                $aboutUs->City = $request->city ?? null;
-                $aboutUs->Age = $request->age ?? null;
-                $aboutUs->Degree = $request->degree ?? null;
-                $aboutUs->Email = Auth()->user()->email ?? $request->email ?? null;
-                $aboutUs->Freelance = $request->freelance ?? null;
-                $aboutUs->status = $request->status;
-                $aboutUs->save();
+                $service->title = $request->title;
+                $service->description = $request->description ?? null;
+                $service->image = $image ?? null;
+                $service->status = $request->status;
+                $service->save();
 
                 DB::commit();
-                return response()->json(['success' => true, 'message' => "About Us Updated successfully"], 200);
+                return response()->json(['success' => true, 'message' => "Service uppdate successfully"]);
             }else{
-                return response()->json(['success' => false, 'message' => 'About Us not found'], 500);
+                return response()->json(['success' => false, 'message' => "Service not found"]);
             }
-        } catch (\Throwable $e) {
+        } catch (\Throwable $th) {
             DB::rollback();
-            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+            Log::info("Error: ".$th->getMessage());
+            return response()->json(['success' => false, 'message' => $th->getMessage()]);
         }
     }
 
@@ -184,8 +167,8 @@ class AboutUsController extends Controller
      */
     public function destroy(string $id)
     {
-        // $this->authorize('blogs-delete');
-        $find = AboutUs::where('id', $id)->first();
+        // $this->authorize('services-delete');
+        $find = Service::where('id', $id)->first();
         if (isset($find) && !empty($find)) {
             $model = $find->delete();
             if ($model) {
@@ -202,10 +185,10 @@ class AboutUsController extends Controller
     }
 
     public function trashed(Request $request){
-        // $this->authorize('blogs-trashed');
+        // $this->authorize('services-trashed');
         $title = 'All Trashed Record';
         $trashed = true;
-        $model = AboutUs::onlyTrashed()->latest()->get();
+        $model = Service::onlyTrashed()->latest()->get();
         if($request->ajax() && $request->loaddata == "yes"){
             return DataTables::of($model)
             ->addIndexColumn()
@@ -240,7 +223,7 @@ class AboutUsController extends Controller
                     $buttons = '<a href="javascript:;"
                         class="btn btn-icon btn-label-info waves-effect restore me-2"
                         title="Restore Record"
-                        data-res-url="' . route('educations.restore', $model->id) . '">
+                        data-res-url="' . route('service.restore', $model->id) . '">
                         <i class="ti ti-refresh ti-sm"></i>
                     </a>';
                 // }
@@ -249,12 +232,12 @@ class AboutUsController extends Controller
             ->rawColumns(['title', 'description', 'status', 'created_at', 'action'])
             ->make(true);
         }
-        return view('admin.about_us.index', get_defined_vars());
+        return view('admin.services.index', get_defined_vars());
     }
 
     public function restore($id){
-        // $this->authorize('educations-restore');
-        $find = AboutUs::onlyTrashed()->where('id', $id)->first();
+        // $this->authorize('services-restore');
+        $find = Service::onlyTrashed()->where('id', $id)->first();
         if (isset($find) && !empty($find)) {
             $restore = $find->restore();
             if (!empty($restore)) {

@@ -21,7 +21,31 @@
                     </ul><!-- End Portfolio Filters -->
 
                     <div class="row g-0 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                        <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                        @if (isset($user['hasProjects']) && !empty($user['hasProjects']) && count($user['hasProjects']) > 0)
+                            @foreach ($user['hasProjects'] as $userProject)
+                                <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                                    <div class="portfolio-content h-100">
+                                        <img src="{{ asset('admin/assets/projects/'.$userProject->main_image) }}" class="img-fluid" alt="" style="height: 350px">
+                                        <div class="portfolio-info">
+                                            <a href="{{ asset('admin/assets/projects/'.$userProject->main_image) }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                            <a href="{{ route('portfolio_detail',$userProject->id) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                        </div>
+                                    </div>
+                                </div><!-- End Portfolio Item -->
+                            @endforeach
+                        @else
+                            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                                <div class="portfolio-content h-100">
+                                    <img src="{{ asset('admin/images/youchef.png') }}" class="img-fluid" alt="" style="height: 350px">
+                                    <div class="portfolio-info">
+                                        <a href="{{ asset('admin/images/youchef.png') }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                        <a href="{{ route('portfolio_detail',['title' => 'yochef']) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                    </div>
+                                </div>
+                            </div><!-- End Portfolio Item -->
+                        @endif
+
+                        {{-- <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                             <div class="portfolio-content h-100">
                                 <img src="{{ asset('admin/images/youchef.png') }}" class="img-fluid" alt="" style="height: 350px">
                                 <div class="portfolio-info">
@@ -129,7 +153,7 @@
                                     <a href="https://birth-journal.dotverge.com" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
+                        </div><!-- End Portfolio Item --> --}}
                     </div><!-- End Portfolio Container -->
                 </div>
             </div>

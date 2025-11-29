@@ -12,15 +12,27 @@
 
             <div class="container">
                 <div class="row gy-4">
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="bi bi-code icon"></i></div>
-                            <h4><a href="javascript:;" class="stretched-link">Web Developer</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                        </div>
-                    </div><!-- End Service Item -->
+                    @if (isset($user['hasServices']) && !empty($user['hasServices']) && count($user['hasServices']) > 0)
+                        @foreach ($user['hasServices'] as $userService)
+                            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                                <div class="service-item position-relative">
+                                    <div class="icon"><i class="bi bi-code icon"></i></div>
+                                    <h4><a href="javascript:;" class="stretched-link">{{ $userService->title ?? '' }}</a></h4>
+                                    <p> {!! $userService->description ?? 'Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi' !!}</p>
+                                </div>
+                            </div><!-- End Service Item -->
+                        @endforeach
+                    @else
+                        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-item position-relative">
+                                <div class="icon"><i class="bi bi-code icon"></i></div>
+                                <h4><a href="javascript:;" class="stretched-link">Web Developer</a></h4>
+                                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            </div>
+                        </div><!-- End Service Item -->
+                    @endif
 
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+                    {{-- <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-item position-relative">
                             <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
                             <h4><a href="javascript:;" class="stretched-link">REST APIs Developer</a></h4>
@@ -42,7 +54,7 @@
                             <h4><a href="javascript:;" class="stretched-link">Web Designer</a></h4>
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                         </div>
-                    </div><!-- End Service Item -->
+                    </div><!-- End Service Item --> --}}
                 </div>
             </div>
         </section>

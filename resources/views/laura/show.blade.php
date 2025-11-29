@@ -94,33 +94,18 @@
                                     </script>
 
                                     <div class="swiper-wrapper align-items-center">
-                                        <div class="swiper-slide">
-                                            <img src="{{ asset('laura/assets/img/portfolio/yochef/Login.png') }}" alt="">
-                                        </div>
 
-                                        <div class="swiper-slide">
-                                            <img src="{{ asset('laura/assets/img/portfolio/yochef/Dashboard.png') }}" alt="">
-                                        </div>
-
-                                        <div class="swiper-slide">
-                                            <img src="{{ asset('laura/assets/img/portfolio/yochef/Users.png') }}" alt="">
-                                        </div>
-
-                                        <div class="swiper-slide">
-                                            <img src="{{ asset('laura/assets/img/portfolio/yochef/Users-Detail.png') }}" alt="">
-                                        </div>
-
-                                        <div class="swiper-slide">
-                                            <img src="{{ asset('laura/assets/img/portfolio/yochef/All-Food-Items.png') }}" alt="">
-                                        </div>
-
-                                        <div class="swiper-slide">
-                                            <img src="{{ asset('laura/assets/img/portfolio/yochef/All-Orders.png') }}" alt="">
-                                        </div>
-
-                                        <div class="swiper-slide">
-                                            <img src="{{ asset('laura/assets/img/portfolio/yochef/Order-Details.png') }}" alt="">
-                                        </div>
+                                        @if (isset($project['hasImages']) && !empty($project['hasImages']) && count($project['hasImages']) > 0)
+                                            @foreach ($project['hasImages'] as $projectImage)
+                                                <div class="swiper-slide">
+                                                    <img src="{{ asset('admin/assets/projects/'.$projectImage->image) }}" alt="" style="width: 800px; height:500px" >
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="swiper-slide">
+                                                <img src="{{ asset('laura/assets/img/portfolio/yochef/Dashboard.png') }}" alt="">
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="swiper-pagination"></div>
                                 </div>
@@ -130,20 +115,16 @@
                                 <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
                                     <h3>Project information</h3>
                                     <ul>
-                                        <li><strong>Category</strong>: Web And Mobile Application</li>
-                                        <li><strong>Client</strong>: US Client</li>
-                                        <li><strong>Project date</strong>: 01 July, 2025</li>
-                                        <li><strong>Project URL</strong>: <a href="https://yochef.dotverge.com" target="_blank">https://yochef.dotverge.com</a></li>
+                                        <li><strong>Category</strong>: {{ $project->category . ' Application' ?? '' }}</li>
+                                        <li><strong>Client</strong>: {{ $project->client_name ?? '' }}</li>
+                                        <li><strong>Project date</strong>: {{ $project->start_date ?? '' }}, {{ $project->end_date ?? '' }}</li>
+                                        <li><strong>Project URL</strong>: <a href="{{ $project->project_url ?? '' }}" target="_blank">{{ $project->project_url ?? '' }}</a></li>
                                     </ul>
                                 </div>
                                 <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-                                    <h2>YoChef Pull-Up &amp; Food Delivery Ecosystem</h2>
+                                    <h2>{{ $project->title ?? '' }}</h2>
                                     <p>
-                                        Developed a complete food delivery ecosystem comprising a User App, Rider App, and Web-Based Admin Panel.
-                                        The User App allows customers to register, browse menus, customize orders, make secure payments, track deliveries in real-time, and provide feedback.
-                                        The Rider App enables delivery personnel to manage assigned orders, navigate with integrated maps, and share live location updates.
-                                        The Admin Panel empowers management to control menus, track inventory, assign riders, and send push notifications.
-                                        Built with a secure backend, real-time APIs, and cloud-hosted database for scalability, the system ensures seamless order processing, efficient delivery management, and engaging customer experience across Android, iOS, and web platforms.
+                                        {!! $project->description ?? '' !!}
                                     </p>
                                 </div>
                             </div>
