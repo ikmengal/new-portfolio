@@ -33,8 +33,6 @@ class SettingController extends Controller
             'favicon' => 'required|image|mimes:png,jpg,jpeg,ico|max:2048',
             'white_logo' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'black_logo' => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'latitude' => 'required',
-            'longitude' => 'required',
         ]);
 
         DB::beginTransaction();
@@ -67,11 +65,10 @@ class SettingController extends Controller
             $model->name = $request->name;
             $model->email = $request->email;
             $model->website_url = $request->url;
+            $model->link = $request->url;
             $model->description = $request->description;
             $model->phone_number = $request->phone_number;
             $model->address = $request->address ?? null;
-            $model->latitude = $request->latitude;
-            $model->longitude = $request->longitude;
             $model->save();
 
             DB::commit();
@@ -86,8 +83,6 @@ class SettingController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
         ]);
 
         DB::beginTransaction();
@@ -127,11 +122,10 @@ class SettingController extends Controller
                 $model->name = $request->name;
                 $model->email = $request->email;
                 $model->website_url = $request->url;
+                $model->link = $request->url;
                 $model->description = $request->description;
                 $model->phone_number = $request->phone_number;
                 $model->address = $request->address;
-                $model->latitude = $request->latitude;
-                $model->longitude = $request->longitude;
                 $model->save();
 
                 DB::commit();

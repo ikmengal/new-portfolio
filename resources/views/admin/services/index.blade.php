@@ -1,5 +1,5 @@
 @extends('admin.admin-layouts.master')
-@push('title', $title.' | '. setting() ?? AppName())
+@push('title', $title.' | '. setting()->name ?? AppName())
 @section('content')
     @if(request()->is('service/trashed'))
         <input type="hidden" id="page_url" value="{{ route('service.trashed') }}">

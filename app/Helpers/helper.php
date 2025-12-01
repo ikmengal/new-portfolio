@@ -35,7 +35,7 @@ function dateTimeFormat($date){
 }
 
 function appName(){
-    return env("APP_NAME") ?? "Winston Zee App ";
+    return env("APP_NAME") ?? "Portfolio Application";
 }
 
 function setting(){
