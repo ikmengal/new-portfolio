@@ -13,7 +13,11 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row gy-4 justify-content-center">
                     <div class="col-lg-4">
-                        <img src="{{ asset('laura/assets/img/profile-img.jpg') }}" class="img-fluid" alt="">
+                        @if (isset($about->image) && !empty($about->image))
+                            <img src="{{ asset('admin/assets/aboutus/'.$about->image) }}" class="img-fluid" alt="">
+                        @else
+                            <img src="{{ asset('laura/assets/img/profile-img.jpg') }}" class="img-fluid" alt="">
+                        @endif
                     </div>
                     <div class="col-lg-8 content">
                         <h2>{{ isset($about->title) && !empty($about->title) ? $about->title : 'PHP &amp; Laravel Developer' }}</h2>

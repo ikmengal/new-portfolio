@@ -31,7 +31,7 @@ class AboutUsController extends Controller
             return DataTables::of($model)
             ->addIndexColumn()
             ->editColumn('title', function($model){
-                return $model->title ?? '';
+                return view('admin.about_us.profile', ['model' => $model])->render();
             })
             ->editColumn('description', function($model){
                 return remarkslimit($model->description) ?? '-';
@@ -102,7 +102,7 @@ class AboutUsController extends Controller
             $aboutUs->Degree = $request->degree ?? null;
             $aboutUs->Email = Auth()->user()->email ?? $request->email ?? null;
             $aboutUs->Freelance = $request->freelance ?? null;
-            // $aboutUs->image = $image;
+            $aboutUs->image = $image;
             $aboutUs->status = $request->status;
             $aboutUs->save();
 
@@ -151,8 +151,8 @@ class AboutUsController extends Controller
             if($aboutUs){
                 $folder_name = 'admin/assets/aboutus';
                 $image = $request->hasFile('image')
-                    ? uploadSingleFile($request->file('image'), $folder_name, 'aboutus', $aboutUs->main_image)
-                    : $aboutUs->main_image;
+                    ? uploadSingleFile($request->file('image'), $folder_name, 'aboutus', $aboutUs->image)
+                    : $aboutUs->image;
 
                 $aboutUs->user_id = Auth::id();
                 $aboutUs->title = $request->title;
@@ -165,6 +165,7 @@ class AboutUsController extends Controller
                 $aboutUs->Degree = $request->degree ?? null;
                 $aboutUs->Email = Auth()->user()->email ?? $request->email ?? null;
                 $aboutUs->Freelance = $request->freelance ?? null;
+                $aboutUs->image = $image ?? null;
                 $aboutUs->status = $request->status;
                 $aboutUs->save();
 

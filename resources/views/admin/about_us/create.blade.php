@@ -94,13 +94,13 @@
     </div>
 </div>
 
-{{-- <div class="row">
+<div class="row">
     <div class="col-md-12 mb-3">
-        <label class="form-label" for="featured_image">Featured Image</label>
-        <input type="file" id="featured_image" name="featured_image" class="form-control" placeholder="Featured Image" />
-        <span id="featured_image_error" class="text-danger error"></span>
+        <label class="form-label" for="image">Image <span class="text-danger">*</span></label>
+        <input type="file" id="image" name="image" class="form-control" placeholder="Image" />
+        <span id="image_error" class="text-danger error"></span>
     </div>
-</div> --}}
+</div>
 
 <div class="row">
     <div class="col-md-12 mt-2">

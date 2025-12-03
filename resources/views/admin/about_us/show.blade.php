@@ -99,6 +99,14 @@
             <th>Created At</th>
             <td>{{ dateFormat($model->created_at) ?? '' }}</td>
         </tr>
+        @if (isset($model->image) && !empty($model->image))
+            <tr>
+                <th>Image</th>
+                <td>
+                    <img src="{{('admin/assets/aboutus/'.$model->image)}}" alt="No Image" width="100px" height="100px">
+                </td>
+            </tr>
+        @endif
     @else
         <h5 class="text-danger text-center">Record not found</h5>
     @endif
