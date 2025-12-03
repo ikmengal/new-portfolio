@@ -286,9 +286,7 @@ class ProjectController extends Controller
         // $this->authorize('projects-restore');
         $find = Project::onlyTrashed()->where('id', $id)->first();
         if (isset($find) && !empty($find)) {
-            ProjectImage::onlyTrashed()
-    ->where('project_id', $id)
-    ->restore();
+            ProjectImage::onlyTrashed()->where('project_id', $id)->restore();
             $restore = $find->restore();
             if (!empty($restore)) {
                 return response()->json([
