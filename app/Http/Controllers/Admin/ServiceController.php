@@ -31,7 +31,7 @@ class ServiceController extends Controller
             return DataTables::of($model)
             ->addIndexColumn()
             ->editColumn('title', function($model){
-                return $model->title ?? '';
+                return view('admin.services.profile', get_defined_vars())->render() ?? '';
             })
             ->editColumn('description', function($model){
                 return remarkslimit($model->description) ?? '-';
@@ -193,7 +193,7 @@ class ServiceController extends Controller
             return DataTables::of($model)
             ->addIndexColumn()
             ->editColumn('title', function($model){
-                return $model->title ?? '-';
+                return view('admin.services.profile', get_defined_vars())->render();
             })
             ->editColumn('description', function($model){
                 return remarkslimit($model->description) ?? '-';

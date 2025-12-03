@@ -30,7 +30,7 @@ class ExperienceController extends Controller
             return DataTables::of($model)
             ->addIndexColumn()
             ->editColumn('title', function($model){
-                return $model->title ?? '';
+                return view('admin.experiences.profile', ['model' => $model])->render();
             })
             ->editColumn('description', function($model){
                 return remarkslimit($model->description) ?? '-';
@@ -206,7 +206,7 @@ class ExperienceController extends Controller
             return DataTables::of($model)
             ->addIndexColumn()
             ->editColumn('title', function($model){
-                return $model->title ?? '-';
+                return view('admin.experiences.profile', get_defined_vars())->render();
             })
             ->editColumn('description', function($model){
                 return remarkslimit($model->description) ?? '-';

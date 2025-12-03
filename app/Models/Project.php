@@ -15,4 +15,8 @@ class Project extends Model
     {
         return $this->hasMany(ProjectImage::class, 'project_id', 'id');
     }
+
+    public function hasUser(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

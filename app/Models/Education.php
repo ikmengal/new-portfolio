@@ -10,4 +10,8 @@ class Education extends Model
 {
     use HasFactory, SoftDeletes;
     protected $guarded = [];
+
+    public function hasUser(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

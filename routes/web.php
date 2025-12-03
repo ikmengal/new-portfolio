@@ -13,7 +13,8 @@ use App\Http\Controllers\Admin\{
     SettingController,
     AdminController,
     HeroController,
-    AuthController
+    AuthController,
+    UserController
 };
 
 Route::get('/', function () {
@@ -86,4 +87,5 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('service', ServiceController::class);
     Route::resource('about_us', AboutUsController::class);
     Route::resource('projects', ProjectController::class);
+    Route::resource('users', UserController::class);
 });

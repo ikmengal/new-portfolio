@@ -51,9 +51,9 @@
                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                         <div class="avatar avatar-online">
                             @if (isset(Auth()->user()->image) && !empty(Auth()->user()->image))
-                                <img src="{{ asset('admin/assets/profile/'.Auth()->user()->image) }}" alt class="h-auto rounded-circle" />
+                                <img src="{{ asset('admin/assets/users/'.Auth()->user()->image) }}" alt class="rounded-circle" />
                             @else
-                                <img src="{{ asset('admin/assets/placeholder.png') }}" alt class="h-auto rounded-circle" />
+                                <img src="{{ asset('admin/assets/placeholder.png') }}" alt class="rounded-circle" />
                             @endif
                         </div>
                     </a>
@@ -64,16 +64,15 @@
                                     <div class="flex-shrink-0 me-3">
                                         <div class="avatar avatar-online">
                                             @if (isset(Auth()->user()->image) && !empty(Auth()->user()->image))
-                                                <img src="{{ asset('admin/assets/profile/'.Auth()->user()->image) }}" alt class="h-auto rounded-circle" />
+                                                <img src="{{ asset('admin/assets/users/'.Auth()->user()->image) }}" alt class="rounded-circle" />
                                             @else
-                                                <img src="{{ asset('admin/assets/placeholder.png') }}" alt class="h-auto rounded-circle" />
+                                                <img src="{{ asset('admin/assets/placeholder.png') }}" alt class="rounded-circle" />
                                             @endif
                                         </div>
                                     </div>
                                     <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">{{ Auth()->user()->name ?? '-' }}</span>
-                                    <small class="text-capitalize text-muted">{{ Auth()->user()->getRoleNames()->first() ?? '-' }}</small>
-                                    {{-- <small class="text-muted">{{ Auth()->user()->email ?? '-' }}</small> --}}
+                                    <small class="text-muted">{{ Auth()->user()->email ?? '-' }}</small>
                                     </div>
                                 </div>
                             </a>
@@ -81,12 +80,12 @@
                         <li>
                             <div class="dropdown-divider"></div>
                         </li>
-                        {{-- <li>
-                            <a class="dropdown-item" href="{{ route('profile.edit',Auth()->user()->slug)}}">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('users.edit',Auth()->user()->id)}}">
                                 <i class="ti ti-user-check me-2 ti-sm"></i>
                                 <span class="align-middle">My Profile</span>
                             </a>
-                        </li> --}}
+                        </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('settings.create') }}">
                                 <i class="ti ti-settings me-2 ti-sm"></i>

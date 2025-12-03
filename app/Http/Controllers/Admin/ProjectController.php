@@ -33,7 +33,7 @@ class ProjectController extends Controller
             return DataTables::of($model)
             ->addIndexColumn()
             ->editColumn('title', function($model){
-                return $model->title ?? '-';
+                return view('admin.projects.profile', get_defined_vars())->render();
             })
             ->editColumn('description', function($model){
                 return remarkslimit($model->description) ?? '-';
@@ -240,7 +240,7 @@ class ProjectController extends Controller
             return DataTables::of($model)
             ->addIndexColumn()
             ->editColumn('title', function($model){
-                return $model->title ?? '-';
+                return view('admin.projects.profile', get_defined_vars())->render();
             })
             ->editColumn('description', function($model){
                 return remarkslimit($model->description) ?? '-';

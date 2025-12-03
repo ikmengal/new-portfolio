@@ -30,7 +30,7 @@ class EducationController extends Controller
             return DataTables::of($model)
             ->addIndexColumn()
             ->editColumn('title', function($model){
-                return $model->title ?? '';
+                return view('admin.educations.profile', ['model' => $model])->render();
             })
             ->editColumn('description', function($model){
                 return remarkslimit($model->description) ?? '-';
@@ -210,7 +210,7 @@ class EducationController extends Controller
             return DataTables::of($model)
             ->addIndexColumn()
             ->editColumn('title', function($model){
-                return $model->title ?? '-';
+                return view('admin.educations.profile', get_defined_vars())->render();
             })
             ->editColumn('description', function($model){
                 return remarkslimit($model->description) ?? '-';
