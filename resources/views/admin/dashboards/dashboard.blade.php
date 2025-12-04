@@ -492,7 +492,7 @@
                         </div>
                         <div id="totalEarningChart"></div>
                         <div class="d-flex align-items-start my-4">
-                            <div class="badge rounded bg-label-primary p-2 me-3 rounded">
+                            <div class="badge bg-label-primary p-2 me-3 rounded">
                                 <i class="ti ti-currency-dollar ti-sm"></i>
                             </div>
                             <div class="d-flex justify-content-between w-100 gap-2 align-items-center">
@@ -504,7 +504,7 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-start">
-                            <div class="badge rounded bg-label-secondary p-2 me-3 rounded">
+                            <div class="badge bg-label-secondary p-2 me-3 rounded">
                                 <i class="ti ti-brand-paypal ti-sm"></i>
                             </div>
                             <div class="d-flex justify-content-between w-100 gap-2 align-items-center">
