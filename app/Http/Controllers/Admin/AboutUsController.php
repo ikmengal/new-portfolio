@@ -143,11 +143,9 @@ class AboutUsController extends Controller
            'title' => 'required|string',
         ]);
 
-
         DB::beginTransaction();
         try {
             $aboutUs = AboutUs::where('id', $id)->first();
-
             if($aboutUs){
                 $folder_name = 'admin/assets/aboutus';
                 $image = $request->hasFile('image')
