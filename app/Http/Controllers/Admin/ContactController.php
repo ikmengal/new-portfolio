@@ -12,7 +12,7 @@ use App\Mail\ContactMail;
 class ContactController extends Controller
 {
     public function store(Request $request){
-         $request->validate([
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'subject' => 'required',

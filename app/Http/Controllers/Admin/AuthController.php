@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-     public function loginForm(){
+    public function loginForm(){
         $title = "Login";
         if(Auth::check()){
             return redirect()->route('dashboard');
