@@ -241,7 +241,7 @@
                                 <li class="d-flex align-items-center mb-4">
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="d-flex align-items-center">
-                                            <h6 class="mb-0 me-1">Record not found</h6>
+                                            <h6 class="mb-0 me-1 text-center text-danger">Record not found</h6>
                                         </div>
                                     </div>
                                 </li>
@@ -280,12 +280,9 @@
                                 @endforeach
                             @else
                                 <li class="mb-4 pb-1 d-flex justify-content-between align-items-center">
-                                    <div class="badge bg-label-success rounded p-2"><i class="ti ti-mail ti-sm"></i></div>
                                     <div class="d-flex justify-content-between w-100 flex-wrap">
-                                        <h6 class="mb-0 ms-3">Emails</h6>
                                         <div class="d-flex">
-                                            <p class="mb-0 fw-semibold">12,346</p>
-                                            <p class="ms-3 text-success mb-0">0.3%</p>
+                                            <p class="mb-0 text-danger text-center">Record not found</p>
                                         </div>
                                     </div>
                                 </li>
@@ -330,17 +327,9 @@
                             @else
                                 <li class="mb-3 pb-1">
                                     <div class="d-flex align-items-start">
-                                        <div class="badge bg-label-secondary p-2 me-3 rounded">
-                                            <i class="ti ti-shadow ti-sm"></i>
-                                        </div>
                                         <div class="d-flex justify-content-between w-100 flex-wrap gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Direct Source</h6>
-                                                <small class="text-muted">Direct link click</small>
-                                            </div>
                                             <div class="d-flex align-items-center">
-                                                <p class="mb-0">1.2k</p>
-                                                <div class="ms-3 badge bg-label-success">+4.2%</div>
+                                                <p class="mb-0 text-danger text-center">Reocrd not found</p>
                                             </div>
                                         </div>
                                     </div>
