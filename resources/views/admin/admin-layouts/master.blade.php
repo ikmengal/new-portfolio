@@ -154,7 +154,7 @@
     <script src="{{ asset('admin/assets/js/toastr.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/action-gateway.js?v=1.0.14') }}"></script>
     <script src="{{ asset('admin/assets/js/dashboards-analytics.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/dashboard-graph.js') }}"></script>
+    {{-- <script src="{{ asset('admin/assets/js/dashboard-graph.js') }}"></script> --}}
     @stack('js')
     <script>
         function showFancyBox() {
