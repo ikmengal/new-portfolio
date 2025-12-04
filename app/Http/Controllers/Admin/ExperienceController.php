@@ -148,7 +148,6 @@ class ExperienceController extends Controller
         DB::beginTransaction();
         try {
             $experience = Experience::where('id', $id)->first();
-
             if($experience){
                 // $folder_name = 'admin/assets/experience';
                 // $image = $request->hasFile('image')
